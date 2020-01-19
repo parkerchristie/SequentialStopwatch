@@ -16,23 +16,26 @@ class MainViewController: UIViewController, StopwatchManagerListener {
     
     @IBOutlet weak var countdownTimer: UILabel!
     
+    @IBOutlet weak var nextStopwatchLabel: UILabel!
+    
+    @IBOutlet weak var nextStopwatchLengthLabel: UILabel!
+    
     @IBOutlet weak var triggerStopwatchButton: UIButton!
     
     @IBOutlet weak var stopStopwatchButton: UIButton!
     
     @IBOutlet weak var editStopwatchButton: UIButton!
     
-    @IBOutlet weak var nextStopwatchLabel: UILabel!
-    @IBOutlet weak var nextStopwatchLengthLabel: UILabel!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         stopwatchManager.delegate = self
-        updateUIAppearances()
+        resetCountdownLabel()
+        updateNextStopwatchLabel()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        updateUIAppearances()
+        resetCountdownLabel()
+        updateNextStopwatchLabel()
     }
     
     @IBAction func triggerStopwatches(sender: UIButton) {
@@ -47,7 +50,7 @@ class MainViewController: UIViewController, StopwatchManagerListener {
         }
     }
     
-    func updateUIAppearances() {
+    func resetCountdownLabel() {
         if #available(iOS 13.0, *) {
             if !stopwatchManager.isRunning {
                 var nextStopwatchLength : Int?
@@ -62,15 +65,6 @@ class MainViewController: UIViewController, StopwatchManagerListener {
                 editStopwatchButton.isEnabled = true
                 
             }
-            if stopwatchManager.isRunning {
-                triggerStopwatchButton.setImage(UIImage(systemName: "pause.circle.fill"), for: UIControl.State.normal)
-                stopStopwatchButton.isEnabled = true
-                editStopwatchButton.isEnabled = false
-            }
-            if stopwatchManager.isPaused {
-                triggerStopwatchButton.setImage(UIImage(systemName: "play.circle.fill"), for: UIControl.State.normal)
-            }
-            updateNextStopwatchLabel()
         }
     }
     
@@ -88,19 +82,28 @@ class MainViewController: UIViewController, StopwatchManagerListener {
     
     func onStart() {
         updateRunningStopwatchLabel()
-        updateUIAppearances()
+        stopStopwatchButton.isEnabled = true
+        editStopwatchButton.isEnabled = false
+        if #available(iOS 13.0, *) {
+            triggerStopwatchButton.setImage(UIImage(systemName: "pause.circle.fill"), for: UIControl.State.normal)
+        }
     }
     
     func onStop() {
-        updateUIAppearances()
+        resetCountdownLabel()
+        updateNextStopwatchLabel()
     }
     
     func onPause() {
-        updateUIAppearances()
+        if #available(iOS 13.0, *) {
+            triggerStopwatchButton.setImage(UIImage(systemName: "play.circle.fill"), for: UIControl.State.normal)
+        }
     }
     
     func onResume() {
-        updateUIAppearances()
+        if #available(iOS 13.0, *) {
+            triggerStopwatchButton.setImage(UIImage(systemName: "pause.circle.fill"), for: UIControl.State.normal)
+        }
     }
     
     func onUpdate() {
