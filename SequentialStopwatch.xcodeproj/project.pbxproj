@@ -17,7 +17,7 @@
 		CD5809FD2294849800569B51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD5809FB2294849800569B51 /* LaunchScreen.storyboard */; };
 		CD580A0522948C6C00569B51 /* Stopwatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD580A0422948C6C00569B51 /* Stopwatch.swift */; };
 		CD82E5B623C7EE8700223AA5 /* StopwatchAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD82E5B523C7EE8700223AA5 /* StopwatchAddViewController.swift */; };
-		CD870D5423D21782004CCF67 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD870D5323D21781004CCF67 /* MainViewController.swift */; };
+		CDAEDC0923D636ED00B071B4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAEDC0823D636ED00B071B4 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +33,7 @@
 		CD5809FE2294849800569B51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD580A0422948C6C00569B51 /* Stopwatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stopwatch.swift; sourceTree = "<group>"; };
 		CD82E5B523C7EE8700223AA5 /* StopwatchAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchAddViewController.swift; sourceTree = "<group>"; };
-		CD870D5323D21781004CCF67 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = /Users/parkerchristie/Developer/SequentialStopwatch/SequentialStopwatch/MainViewController.swift; sourceTree = "<absolute>"; };
+		CDAEDC0823D636ED00B071B4 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,7 +50,7 @@
 		CD54B3B923D36763001C4DFF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				CD870D5323D21781004CCF67 /* MainViewController.swift */,
+				CDAEDC0823D636ED00B071B4 /* MainViewController.swift */,
 				CD1CB02A22A81AE2008E549E /* StopwatchViewController.swift */,
 				CD42DC5B2348EE0F00D41F54 /* StopwatchTableViewCell.swift */,
 				CD82E5B523C7EE8700223AA5 /* StopwatchAddViewController.swift */,
@@ -176,7 +176,7 @@
 				CD1CB02B22A81AE2008E549E /* StopwatchViewController.swift in Sources */,
 				CD098B0822959AAE0087F531 /* StopwatchManager.swift in Sources */,
 				CD82E5B623C7EE8700223AA5 /* StopwatchAddViewController.swift in Sources */,
-				CD870D5423D21782004CCF67 /* MainViewController.swift in Sources */,
+				CDAEDC0923D636ED00B071B4 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

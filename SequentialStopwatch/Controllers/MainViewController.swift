@@ -14,17 +14,17 @@ class MainViewController: UIViewController, StopwatchManagerListener {
     
     var stopwatchManager = StopwatchManager()
     
-    @IBOutlet weak var countdownTimer: UILabel!
+    @IBOutlet private weak var countdownTimer: UILabel!
     
-    @IBOutlet weak var nextStopwatchLabel: UILabel!
+    @IBOutlet private weak var nextStopwatchLabel: UILabel!
     
-    @IBOutlet weak var nextStopwatchLengthLabel: UILabel!
+    @IBOutlet private weak var nextStopwatchLengthLabel: UILabel!
     
-    @IBOutlet weak var triggerStopwatchButton: UIButton!
+    @IBOutlet private weak var triggerStopwatchButton: UIButton!
     
-    @IBOutlet weak var stopStopwatchButton: UIButton!
+    @IBOutlet private weak var stopStopwatchButton: UIButton!
     
-    @IBOutlet weak var editStopwatchButton: UIButton!
+    @IBOutlet private weak var editStopwatchButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +38,7 @@ class MainViewController: UIViewController, StopwatchManagerListener {
         updateNextStopwatchLabel()
     }
     
-    @IBAction func triggerStopwatches(sender: UIButton) {
+    @IBAction private func triggerStopwatches(sender: UIButton) {
         if !stopwatchManager.isRunning {
             stopwatchManager.startStopwatches()
         }
@@ -50,7 +50,7 @@ class MainViewController: UIViewController, StopwatchManagerListener {
         }
     }
     
-    func resetCountdownLabel() {
+    private func resetCountdownLabel() {
         if #available(iOS 13.0, *) {
             if !stopwatchManager.isRunning {
                 var nextStopwatchLength : Int?
@@ -68,11 +68,11 @@ class MainViewController: UIViewController, StopwatchManagerListener {
         }
     }
     
-    @IBAction func stopStopwatches(_ sender: UIButton) {
+    @IBAction private func stopStopwatches(_ sender: UIButton) {
         stopwatchManager.endStopwatches()
     }
     
-    @objc func updateRunningStopwatchLabel() {
+    @objc private func updateRunningStopwatchLabel() {
         let timeRemaining = stopwatchManager.currentStopwatch?.getTimeRemaining()
         if (timeRemaining != nil) {
             let (h, m, s) = stopwatchManager.secondsToHoursMinutesSeconds(seconds: timeRemaining!)

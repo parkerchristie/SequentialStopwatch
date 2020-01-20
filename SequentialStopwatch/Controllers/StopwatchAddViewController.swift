@@ -25,7 +25,7 @@ class StopwatchAddViewController : UIViewController, UIPickerViewDelegate, UIPic
         self.inputTimer.dataSource = self
     }
     
-    @IBAction func addTimer(sender: UIButton) {
+    @IBAction private func addTimer(sender: UIButton) {
         var timeToAdd : Int = 0
         timeToAdd += seconds
         timeToAdd += minutes * 60
