@@ -9,12 +9,13 @@
 import Foundation
 
 class Stopwatch {
-    public private(set) var length: Int
-    private var timeRemaining: Int
+    public private(set) var length: Double
+    private var timeRemaining: Double
     private var isRunning: Bool
     private var isPaused: Bool
+    private let timeIncrement = 0.1
     
-    init(stopwatchLength: Int) {
+    init(stopwatchLength: Double) {
         self.length = stopwatchLength
         self.timeRemaining = stopwatchLength
         self.isRunning = false;
@@ -23,12 +24,12 @@ class Stopwatch {
     
     public func startStopwatch() {
         isRunning = true
-        timeRemaining = length
+        timeRemaining = length - timeIncrement
     }
     
     public func updateStopwatch() {
         if isRunning && !isPaused {
-            self.timeRemaining -= 1
+            self.timeRemaining -= timeIncrement
         }
     }
     
@@ -53,7 +54,7 @@ class Stopwatch {
         }
     }
     
-    public func getTimeRemaining() -> Int {
+    public func getTimeRemaining() -> Double {
         return self.timeRemaining
     }
     

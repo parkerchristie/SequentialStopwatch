@@ -31,7 +31,7 @@ class StopwatchAddViewController : UIViewController, UIPickerViewDelegate, UIPic
         timeToAdd += minutes * 60
         timeToAdd += hours * 3600
         if (timeToAdd > 0) {
-            stopwatchManager?.addStopwatch(length: Int(timeToAdd))
+            stopwatchManager?.addStopwatch(length: Double(timeToAdd))
         }
     }
     

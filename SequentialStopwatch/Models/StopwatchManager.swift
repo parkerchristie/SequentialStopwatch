@@ -22,7 +22,7 @@ class StopwatchManager {
         isRunning = false
     }
     
-    public func addStopwatch(length: Int) {
+    public func addStopwatch(length: Double) {
         let newStopwatch = Stopwatch(stopwatchLength: length)
         stopwatchList.append(newStopwatch)
     }
@@ -36,7 +36,7 @@ class StopwatchManager {
             isPaused = false
             currentStopwatch = stopwatchList[0]
             currentStopwatch?.startStopwatch()
-            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateStopwatches), userInfo: nil, repeats: true)
+            startTimer()
             delegate?.onStart()
             delegate?.onNextStopwatch()
         }
@@ -69,7 +69,7 @@ class StopwatchManager {
         currentStopwatch?.endStopwatch()
         delegate?.onStopwatchFinish()
         currentStopwatch = nil
-        timer?.invalidate()
+        endTimer()
         isRunning = false
         isPaused = false
         delegate?.onStop()
@@ -95,7 +95,7 @@ class StopwatchManager {
     public func pauseStopwatches() {
         isPaused = true
         currentStopwatch?.pauseStopwatch()
-        timer?.invalidate()
+        endTimer()
         delegate?.onPause()
     }
     
@@ -104,12 +104,12 @@ class StopwatchManager {
             return
         }
         isPaused = false
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateStopwatches), userInfo: nil, repeats: true)
+        startTimer()
         currentStopwatch?.resumeStopwatch()
         delegate?.onResume()
     }
     
-    public func getNextStopwatchLength() -> Int? {
+    public func getNextStopwatchLength() -> Double? {
         let stopwatchIndex: Int?
         
         if currentStopwatch == nil {
@@ -128,8 +128,16 @@ class StopwatchManager {
         return nil
     }
     
+    private func startTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateStopwatches), userInfo: nil, repeats: true)
+    }
+    
+    private func endTimer() {
+        timer?.invalidate()
+    }
+    
     // Returns the length of the stopwatch after the given index
-    public func getNextStopwatchLength(index: Int) -> Int? {
+    public func getNextStopwatchLength(index: Int) -> Double? {
         if stopwatchList.count < index + 2 {
             return nil
         }
@@ -137,8 +145,8 @@ class StopwatchManager {
         return stopwatchList[index + 1]?.length
     }
     
-    func secondsToHoursMinutesSeconds (seconds : Int) -> (Int, Int, Int) {
-        return (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
+    func secondsToHoursMinutesSeconds (seconds : Double) -> (Int, Int, Int) {
+        return ((Int)(seconds / 3600), (Int)(seconds.truncatingRemainder(dividingBy: 3600)) / 60, (Int)(seconds.truncatingRemainder(dividingBy: 3600)) % 60)
     }
     
 }

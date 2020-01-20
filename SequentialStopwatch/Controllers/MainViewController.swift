@@ -53,7 +53,7 @@ class MainViewController: UIViewController, StopwatchManagerListener {
     private func resetCountdownLabel() {
         if #available(iOS 13.0, *) {
             if !stopwatchManager.isRunning {
-                var nextStopwatchLength : Int?
+                var nextStopwatchLength : Double?
                 nextStopwatchLength = stopwatchManager.getNextStopwatchLength()
                 
                 if nextStopwatchLength != nil {
@@ -115,7 +115,7 @@ class MainViewController: UIViewController, StopwatchManagerListener {
     }
     
     func updateNextStopwatchLabel() {
-        var nextStopwatchLength : Int?
+        var nextStopwatchLength : Double?
         if stopwatchManager.currentStopwatch == nil {
             nextStopwatchLength = stopwatchManager.getNextStopwatchLength(index: 0)
         }
